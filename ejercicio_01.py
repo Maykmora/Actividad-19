@@ -31,11 +31,13 @@ class Relleno:
     def describir_relleno(self):
         print(f"Galleta con relleno sabor:{self.sabor_relleno}")
 
-class GalletaRellena(Galletas,Relleno):
+class GalletasRellena(Galletas,Relleno):
     def __init__(self,nombre, precio, peso, sabor_relleno):
-        Galletas.__init__(nombre, precio, peso)
-        Relleno.__init__(sabor_relleno)
-
+        Galletas.__init__(self,nombre, precio, peso)
+        Relleno.__init__(self,sabor_relleno)
+    def mostrar_info(self):
+        print("\nInformación Galletas Rellenas")
+        print(f"Nombre:{self.nombre} -- Precio:{self.precio} --Peso:{self.peso} --Sabor:{self.sabor_relleno}")
 galletas=[]
 while True:
     option=input("Seleccione una opción del menú (1-7):")
@@ -49,7 +51,7 @@ while True:
             print("Galleta básica registrada.")
 
         case "2":
-            nombre = input("Nombre de la galleta básica: ")
+            nombre = input("Nombre de la galleta con chispas: ")
             precio = float(input("Precio: "))
             peso = float(input("Peso: "))
             cantidad_chispas=int(input("Cantidad de chispas:"))
@@ -58,7 +60,14 @@ while True:
             print("Galleta con chispas registrada.")
 
         case "3":
-            print()
+            nombre = input("Nombre de la galleta con relleno: ")
+            precio = float(input("Precio: "))
+            peso = float(input("Peso: "))
+            sabor_relleno= input("Ingrese el tipo de relleno de la galleta:")
+            g = GalletasRellena(nombre, precio, peso, sabor_relleno)
+            galletas.append(g)
+            print("Galleta rellena registrada.")
+
         case "4":
             if galletas:
                 for g in galletas:
