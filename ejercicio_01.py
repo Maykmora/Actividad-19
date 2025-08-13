@@ -14,16 +14,27 @@ class Galletas:
         self.peso=peso
 
     def mostrar_info(self):
-        print("Información de la galleta:")
+        print("\nInformación de galletas basicas:")
         print(f"Nombre:{self.nombre} --Precio: {self.precio} --Peso:{self.peso}")
 
 class GalletasChispas(Galletas):
     def __init__(self, nombre,precio,peso,cantidad_chispas):
-        super().__init__(self,nombre,precio,peso)
+        super().__init__(nombre,precio,peso)
         self.cantidad_chispas= cantidad_chispas
     def mostrar_info(self):
+        print("\nInformación Galletas con chispas")
         print(f"Nombre: {self.nombre} --Precio:{self.precio} --Peso:{self.peso} --Cantidad de chispas:{self.cantidad_chispas}")
 
+class Relleno:
+    def __init__(self, sabor_relleno):
+        self.sabor_relleno=sabor_relleno
+    def describir_relleno(self):
+        print(f"Galleta con relleno sabor:{self.sabor_relleno}")
+
+class GalletaRellena(Galletas,Relleno):
+    def __init__(self,nombre, precio, peso, sabor_relleno):
+        Galletas.__init__(nombre, precio, peso)
+        Relleno.__init__(sabor_relleno)
 
 galletas=[]
 while True:
@@ -38,7 +49,14 @@ while True:
             print("Galleta básica registrada.")
 
         case "2":
-            print()
+            nombre = input("Nombre de la galleta básica: ")
+            precio = float(input("Precio: "))
+            peso = float(input("Peso: "))
+            cantidad_chispas=int(input("Cantidad de chispas:"))
+            g = GalletasChispas(nombre, precio, peso, cantidad_chispas)
+            galletas.append(g)
+            print("Galleta con chispas registrada.")
+
         case "3":
             print()
         case "4":
