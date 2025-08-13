@@ -17,6 +17,14 @@ class Galletas:
         print("Información de la galleta:")
         print(f"Nombre:{self.nombre} --Precio: {self.precio} --Peso:{self.peso}")
 
+class GalletasChispas(Galletas):
+    def __init__(self, nombre,precio,peso,cantidad_chispas):
+        super().__init__(self,nombre,precio,peso)
+        self.cantidad_chispas= cantidad_chispas
+    def mostrar_info(self):
+        print(f"Nombre: {self.nombre} --Precio:{self.precio} --Peso:{self.peso} --Cantidad de chispas:{self.cantidad_chispas}")
+
+
 galletas=[]
 while True:
     option=input("Seleccione una opción del menú (1-7):")
