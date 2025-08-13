@@ -15,21 +15,30 @@ class Galletas:
 
     def mostrar_info(self):
         print("Información de la galleta:")
-        print(f"Nombre {self.nombre} --Precio: {self.precio} --Peso:{self.peso}")
-
+        print(f"Nombre:{self.nombre} --Precio: {self.precio} --Peso:{self.peso}")
 
 galletas=[]
 while True:
     option=input("Seleccione una opción del menú (1-7):")
     match option:
         case "1":
-            print()
+            nombre = input("Nombre de la galleta básica: ")
+            precio = float(input("Precio: "))
+            peso = float(input("Peso: "))
+            g = Galletas(nombre, precio, peso)
+            galletas.append(g)
+            print("Galleta básica registrada.")
+
         case "2":
             print()
         case "3":
             print()
         case "4":
-            print()
+            if galletas:
+                for g in galletas:
+                    g.mostrar_info()
+            else:
+                print("No hay galletas registradas.")
         case "5":
             print()
         case "6":
