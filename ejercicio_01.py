@@ -1,5 +1,5 @@
 def menu():
-    print("1.Registrar galleta básica")
+    print("\n1.Registrar galleta básica")
     print("2.Registrar galleta con chispas")
     print("3.Registrar galleta rellena")
     print("4.Listar galletas")
@@ -40,6 +40,7 @@ class GalletasRellena(Galletas,Relleno):
         print(f"Nombre:{self.nombre} -- Precio:{self.precio} --Peso:{self.peso} --Sabor:{self.sabor_relleno}")
 galletas=[]
 while True:
+    menu()
     option=input("Seleccione una opción del menú (1-7):")
     match option:
         case "1":
@@ -75,10 +76,33 @@ while True:
             else:
                 print("No hay galletas registradas.")
         case "5":
-            print()
+            print("\n--Buscar galleta--")
+            nombre_buscado = input("Ingrese el nombre de la galleta que desea buscar: ").strip()
+            encontrados = []
+            for g in galletas:
+                if nombre_buscado.lower() in g.nombre.lower():
+                    encontrados.append(g)
+
+            if encontrados:
+                for g in encontrados:
+                    g.mostrar_info()
+            else:
+                print("No se encontró ni una galleta con ese nombre")
         case "6":
-            print()
+            print("\n--Eliminar galleta--")
+            nombre_eliminar = input("Ingrese el nombre de la galleta que desea eliminar: ").strip()
+            encontrados = []
+            for galleta in galletas:
+                if nombre_eliminar.lower() in galleta.nombre.lower():
+                    encontrados.append(galleta)
+            if encontrados:
+                for galleta in encontrados:
+                    galletas.remove(galleta)
+                print("Galleta eliminada correctamente")
+            else:
+                print("No se encontró ninguna galleta con ese nombre.")
         case "7":
-            print()
+            print("Gracias por usar el programa")
+            break
         case _:
-            print()
+            print("Opción invalida, inténtelo de nuevo")
