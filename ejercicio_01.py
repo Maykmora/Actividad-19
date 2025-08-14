@@ -44,30 +44,80 @@ while True:
     option=input("Seleccione una opción del menú (1-7):")
     match option:
         case "1":
-            nombre = input("Nombre de la galleta básica: ")
-            precio = float(input("Precio: "))
-            peso = float(input("Peso: "))
-            g = Galletas(nombre, precio, peso)
-            galletas.append(g)
-            print("Galleta básica registrada.")
+            while True:
+                nombre = input("Nombre de la galleta básica: ")
+                if not nombre.strip():
+                    print("No ingresaste ningún nombre, inténtelo de nuevo")
+                else:
+                    try:
+                        precio = float(input("Precio: "))
+                        if precio <= 0:
+                            print("El precio debe ser mayor a 0. Inténtalo de nuevo.")
+                            continue
+                        peso = float(input("Peso: "))
+                        if peso <= 0:
+                            print("El peso debe ser mayor a 0. Inténtalo de nuevo.")
+                            continue
+                        g = Galletas(nombre, precio, peso)
+                        galletas.append(g)
+                        print("Galleta básica registrada.")
+                        break
+                    except ValueError:
+                        print("Precio y peso deben ser números positivos, inténtelo de nuevo")
 
         case "2":
-            nombre = input("Nombre de la galleta con chispas: ")
-            precio = float(input("Precio: "))
-            peso = float(input("Peso: "))
-            cantidad_chispas=int(input("Cantidad de chispas:"))
-            g = GalletasChispas(nombre, precio, peso, cantidad_chispas)
-            galletas.append(g)
-            print("Galleta con chispas registrada.")
+            while True:
+                nombre = input("Nombre de la galleta con chispas: ")
+                if not nombre.strip():
+                    print("No ingresaste ningún nombre, inténtelo de nuevo")
+                else:
+                    try:
+                        precio = float(input("Precio: "))
+                        if precio <= 0:
+                            print("El precio debe ser mayor a 0. Inténtalo de nuevo.")
+                            continue
+                        peso = float(input("Peso: "))
+                        if peso <= 0:
+                            print("El peso debe ser mayor a 0. Inténtalo de nuevo.")
+                            continue
+
+                        cantidad_chispas=int(input("Cantidad de chispas:"))
+                        if cantidad_chispas<=0:
+                            print("La cantidad de chispas debe ser mayor a 0. Inténtalo de nuevo")
+
+                        g = GalletasChispas(nombre, precio, peso, cantidad_chispas)
+                        galletas.append(g)
+                        print("Galleta con chispas registrada.")
+                        break
+                    except ValueError:
+                        print("Precio,peso y cantidad de chispas deben ser números positivos, inténtelo de nuevo")
 
         case "3":
-            nombre = input("Nombre de la galleta con relleno: ")
-            precio = float(input("Precio: "))
-            peso = float(input("Peso: "))
-            sabor_relleno= input("Ingrese el tipo de relleno de la galleta:")
-            g = GalletasRellena(nombre, precio, peso, sabor_relleno)
-            galletas.append(g)
-            print("Galleta rellena registrada.")
+            while True:
+                nombre = input("Nombre de la galleta con relleno: ")
+                if not nombre.strip():
+                    print("No ingresaste ningún nombre, inténtelo de nuevo")
+                else:
+                    try:
+                        precio = float(input("Precio: "))
+                        if precio <= 0:
+                            print("El precio debe ser mayor a 0. Inténtalo de nuevo.")
+                            continue
+                        peso = float(input("Peso: "))
+                        if peso <= 0:
+                            print("El peso debe ser mayor a 0. Inténtalo de nuevo.")
+                            continue
+                        sabor_relleno= input("Ingrese el tipo de relleno de la galleta:")
+                        if not sabor_relleno.strip():
+                            print("No ingresaste ningún relleno, inténtelo de nuevo.")
+                            continue
+
+                        g = GalletasRellena(nombre, precio, peso, sabor_relleno)
+                        galletas.append(g)
+                        print("Galleta rellena registrada.")
+                        break
+                    except ValueError:
+                        print("Precio y peso deben ser números positivos, inténtelo de nuevo")
 
         case "4":
             if galletas:
